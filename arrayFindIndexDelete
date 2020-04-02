@@ -1,0 +1,36 @@
+package main
+
+ import "fmt"
+
+ func main() {
+ 	strSlice := []string{"abc", "xyz", "def", "ghi", "jkl"}
+
+ 	fmt.Println("Before delete")
+
+ 	for k, v := range strSlice {
+ 		fmt.Printf("key : %v, value : %v \n", k, v)
+ 	}
+
+ 	// we want to remove xyz and the index/key number associated
+ 	// with it is 1
+
+ 	i := indexOf("jkl", strSlice[:])
+
+ 	newSlice := append(strSlice[:i], strSlice[i+1:]...)
+
+ 	fmt.Println("After delete")
+
+ 	for k, v := range newSlice {
+ 		fmt.Printf("key : %v, value : %v \n", k, v)
+ 	}
+
+ }
+
+func indexOf(element string, data []string) (int) {
+   for k, v := range data {
+       if element == v {
+           return k
+       }
+   }
+   return -1    //not found.
+}
